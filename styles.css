@@ -1,45 +1,61 @@
-/* Genel stil ayarları */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    box-sizing: border-box;
 }
 
 header {
     background: #333;
-    color: #ffF;
+    color: #fff;
     padding: 10px 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.section {
+    padding: 50px;
     text-align: center;
 }
 
-
-nav ul {
-    list-style: none;
-    padding: 0;
+#home {
+    background: #f4f4f4;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 10px;
+#about {
+    background: #e2e2e2;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
+#projects {
+    background: #ccc;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
+#contact {
+    background: #999;
 }
 
-main {
+.project {
+    background: #fff;
+    margin: 20px auto;
     padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 600px;
 }
 
 footer {
@@ -47,13 +63,4 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
-
-h1 {
-    font-size: 36px; }
-
-
-
