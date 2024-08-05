@@ -1,87 +1,93 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-header {
-    background: #ff5722;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
 }
 
-header nav ul {
-    list-style: none;
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header .container {
     display: flex;
-    justify-content: center;
-    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
     margin: 0;
 }
 
-header nav ul li {
-    margin: 0 15px;
+nav ul {
+    list-style: none;
+    display: flex;
 }
 
-header nav ul li a {
+nav ul li {
+    margin-left: 1rem;
+}
+
+nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
 }
 
-.lang-switch {
-    font-weight: normal;
-}
-
-.section {
-    padding: 50px;
+.hero {
+    background: #f4f4f4;
+    padding: 2rem 0;
     text-align: center;
 }
 
-.intro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+.hero h2 {
+    margin-bottom: 1rem;
 }
 
-.intro-text {
-    flex: 1;
+.hero p {
+    margin-bottom: 1.5rem;
 }
 
-.intro-image img {
-    max-width: 100%;
-    border-radius: 10px;
-}
-
-#projects {
-    background: #ff9800;
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
     color: #fff;
+    background: #333;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-.project-list {
+.content-section {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.content-section h2 {
+    margin-bottom: 1rem;
+}
+
+.services {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 1rem;
 }
 
-.project-item {
-    background: #fff;
-    color: #000;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    max-width: 300px;
-    width: 100%;
+.service {
+    width: 30%;
+    padding: 1rem;
+    background: #f4f4f4;
+    border-radius: 5px;
 }
 
 footer {
     background: #333;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 1rem 0;
+    margin-top: 2rem;
 }
