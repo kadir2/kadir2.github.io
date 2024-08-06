@@ -1,236 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML><html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulkadir Arslan</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            background: #f4f4f9;
-            color: #333;
-        }
-
-        header {
-            background: #007bff;
-            color: #fff;
-            padding: 1rem 0;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        header h1 {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #f4f4f4;
-        }
-
-        .hero {
-            background: #007bff;
-            color: #fff;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .hero .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            color: #007bff;
-            background: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .btn:hover {
-            background: #f4f4f9;
-            color: #007bff;
-        }
-
-        .content-section {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .content-section .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .content-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #007bff;
-        }
-
-        .content-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .services {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .service {
-            width: 30%;
-            background: #fff;
-            padding: 2rem;
-            margin: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .service:hover {
-            transform: translateY(-10px);
-        }
-
-        .service h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #007bff;
-        }
-
-        .service p {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        footer .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1rem;
-        }
-    </style>
+  <title>ESP Web Server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { text-align: center; font-family: "Trebuchet MS", Arial; margin-left:auto; margin-right:auto; }
+    h2 { margin-top: 0.5em; }
+    p { margin-top: 0.5em; }
+    div { margin-top: 0.5em; }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>My Website</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Ana Sayfa</a></li>
-                    <li><a href="#about">Hakkında</a></li>
-                    <li><a href="#services">Hizmetler</a></li>
-                    <li><a href="#contact">İletişim</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <h1>ESP Web Server</h1>
+  <h2>Temperature: <span id="temperature"></span> &deg;C</h2>
+  <h2>Humidity: <span id="humidity"></span> %</h2>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <h2>Welcome to My Website</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo at mauris convallis, nec suscipit ligula pretium.</p>
-            <a href="#about" class="btn">Learn More</a>
-        </div>
-    </section>
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('data.txt');
+        const text = await response.text();
+        const data = text.split(',');
 
-    <section id="about" class="content-section">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel turpis nec nunc vehicula tincidunt. Vivamus sit amet erat ut purus.</p>
-        </div>
-    </section>
+        document.getElementById('temperature').innerText = data[0].split(': ')[1];
+        document.getElementById('humidity').innerText = data[1].split(': ')[1];
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
 
-    <section id="services" class="content-section">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services">
-                <div class="service">
-                    <h3>Service 1</h3>
-                    <p>Quisque ac orci sit amet elit faucibus lacinia. Donec laoreet nulla et consequat volutpat.</p>
-                </div>
-                <div class="service">
-                    <h3>Service 2</h3>
-                    <p>Maecenas vehicula justo et sapien lacinia, ac tincidunt odio scelerisque.</p>
-                </div>
-                <div class="service">
-                    <h3>Service 3</h3>
-                    <p>Curabitur pharetra turpis non est molestie, sit amet condimentum turpis aliquam.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="content-section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>If you have any questions, feel free to reach out to us!</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 My Website. All rights reserved.</p>
-        </div>
-    </footer>
+    setInterval(fetchData, 5000); // 5 saniyede bir verileri güncelle
+    fetchData(); // İlk yüklemede verileri getir
+  </script>
 </body>
 </html>
