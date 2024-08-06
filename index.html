@@ -1,4 +1,5 @@
-<!DOCTYPE HTML><html>
+<!DOCTYPE HTML>
+<html>
 <head>
   <title>ESP Web Server</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,12 +18,12 @@
   <script>
     async function fetchData() {
       try {
-        const response = await fetch('data.txt');
-        const text = await response.text();
-        const data = text.split(',');
+        const response = await fetch('/data.txt');
+        const data = await response.text();
+        const [temperature, humidity] = data.split(',').map(item => item.split(': ')[1]);
 
-        document.getElementById('temperature').innerText = data[0].split(': ')[1];
-        document.getElementById('humidity').innerText = data[1].split(': ')[1];
+        document.getElementById('temperature').innerText = temperature;
+        document.getElementById('humidity').innerText = humidity;
       } catch (error) {
         console.error('Error fetching data:', error);
       }
