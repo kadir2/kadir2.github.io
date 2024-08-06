@@ -1,9 +1,9 @@
 <?php
-if (isset($_GET['temperature']) && isset($_GET['humidity'])) {
-    $temperature = $_GET['temperature'];
-    $humidity = $_GET['humidity'];
+if (isset($_POST['temperature']) && isset($_POST['humidity'])) {
+    $temperature = $_POST['temperature'];
+    $humidity = $_POST['humidity'];
 
-    // Değerleri bir dosyaya veya veritabanına kaydedin
+    // Verileri bir dosyaya kaydet
     $data = "Temperature: $temperature, Humidity: $humidity";
     file_put_contents('data.txt', $data);
     echo "Data received: $data";
